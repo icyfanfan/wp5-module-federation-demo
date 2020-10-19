@@ -1,0 +1,26 @@
+{
+  "name": "host-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --config=./webpack.config.js",
+    "start": "webpack-cli serve"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/preset-react": "^7.12.1",
+    "babel-loader": "^8.1.0",
+    "html-webpack-plugin": "^5.0.0-alpha.5",
+    "webpack": "^5.1.2",
+    "webpack-cli": "^4.0.0",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0"
+  }
+}
