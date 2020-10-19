@@ -30,11 +30,15 @@ const App = () => {
         <option value="modalA">modalA</option>
         <option value="modalB">modalB</option>
       </select>
-      {ModalComponent && (
-        <React.Suspense fallback="Loading ModalA">
-          <ModalComponent />
-        </React.Suspense>
-      )}
+      <div style={{
+        marginTop: '20px'
+      }}>
+        {ModalComponent && (
+          <React.Suspense fallback="Loading ModalA">
+            <ModalComponent />
+          </React.Suspense>
+        )}
+      </div>
     </div>
   );
 };

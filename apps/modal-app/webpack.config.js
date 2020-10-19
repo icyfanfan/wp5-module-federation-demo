@@ -43,7 +43,13 @@ module.exports = {
         './modalA': './src/containers/modalA/modalA',
         './modalB': './src/containers/modalB/modalB',
       },
-      shared: { react: { singleton: true }, "react-dom": { singleton: true } },
+      shared: [
+        {
+          react: { singleton: true },
+          "react-dom": { singleton: true },
+        },
+        "./src/components",
+      ],
     }),
   ]
 }
