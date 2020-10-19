@@ -2,10 +2,7 @@
  * webpack config for modal-app
  */
 const path = require('path');
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
-
 
 module.exports = {
   mode: 'development',
@@ -33,6 +30,7 @@ module.exports = {
   },
   optimization: {
     minimize: false,
+
   },
   resolve: {
     extensions: ['.js', '.jsx'],
@@ -45,9 +43,7 @@ module.exports = {
         './modalA': './src/containers/modalA/modalA',
         './modalB': './src/containers/modalB/modalB',
       },
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
+      shared: { react: { singleton: true }, "react-dom": { singleton: true } },
     }),
   ]
 }

@@ -43,6 +43,7 @@ module.exports = {
       remotes: {
         modalApp: "modalApp@http://localhost:3001/remoteEntry.js",
       },
+      shared: { react: { singleton: true }, "react-dom": { singleton: true } },
     }),
     new HtmlWebpackPlugin({
       template: "./public/index.html",
