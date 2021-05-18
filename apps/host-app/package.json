@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --config=./webpack.config.js",
-    "start": "webpack-cli serve"
+    "build": "npx webpack --config=./webpack.config.js",
+    "start": "npx webpack serve --mode=development"
   },
   "keywords": [],
   "author": "",

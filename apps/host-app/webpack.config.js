@@ -7,7 +7,6 @@ const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPl
 
 
 module.exports = {
-  mode: 'development',
   devServer: {
     contentBase: path.join(__dirname, "dist"),
     port: 3000,
