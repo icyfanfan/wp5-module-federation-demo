@@ -9,7 +9,7 @@ module.exports = {
     contentBase: path.join(__dirname, "dist"),
     port: 3001,
   },
-  entry: './src/index.js',
+  entry: './src/containers/index.js',
   output: {
     publicPath: "auto",
   },
@@ -41,13 +41,13 @@ module.exports = {
         './modalA': './src/containers/modalA/modalA',
         './modalB': './src/containers/modalB/modalB',
       },
-      shared: [
-        {
-          react: { singleton: true },
-          "react-dom": { singleton: true },
-        },
-        "./src/components",
-      ],
+      // shared: [
+      //   {
+      //     react: { singleton: true },
+      //     "react-dom": { singleton: true },
+      //   },
+      //   "./src/components",
+      // ],
     }),
   ]
 }
