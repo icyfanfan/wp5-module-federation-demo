@@ -22,7 +22,7 @@ const App = () => {
 
   return (
     <div>
-      <h1>HOST APP</h1>
+      <h1>HOST APP DEMO</h1>
       {/* Please select a remote modal to display: */}
       {/* <select value={selModal} onChange={e => {
         setSelModal(e.target.value)
