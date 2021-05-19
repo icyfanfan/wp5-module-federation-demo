@@ -9,7 +9,7 @@ module.exports = {
     contentBase: path.join(__dirname, "dist"),
     port: 3001,
   },
-  entry: './src/index.js',
+  entry: './src/App.js',
   output: {
     publicPath: "auto",
   },
@@ -35,18 +35,16 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'modalApp',
+      name: 'modalA',
       filename: 'remoteEntry.js',
       exposes: {
-        './modalA': './src/containers/modalA/modalA',
-        './modalB': './src/containers/modalB/modalB',
+        './Modal': './src/App',
       },
       shared: [
         {
           react: { singleton: true },
           "react-dom": { singleton: true },
         },
-        "./src/components",
       ],
     }),
   ]

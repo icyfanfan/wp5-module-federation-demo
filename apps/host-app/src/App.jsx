@@ -1,30 +1,31 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
+import {DynamicComponent} from './DynamicComponent';
 
 const App = () => {
-  const [ModalComponent, setModalComponent] = useState(null);
-  const [selModal, setSelModal] = useState('');
+  const [selModal, setSelModal] = useState(null);
 
-  useEffect(() => {
-    if(selModal === '') {
-      setModalComponent(null);
-      return;
+  const onSelChange = (val) => {
+    if(val === 'modalA') {
+      setSelModal({
+        url: "http://localhost:3001/remoteEntry.js",
+        scope: "modalA",
+        module: "./Modal",
+      });
+    } else if(val === 'modalB') {
+      setSelModal({
+        url: "http://localhost:3002/remoteEntry.js",
+        scope: "modalB",
+        module: "./Modal",
+      });
     }
-    const Modal = React.lazy(() => {
-      // cannot use `template string` in import
-      switch(selModal) {
-        case 'modalA': return import('modalApp/modalA');
-        case 'modalB': return import('modalApp/modalB');
-      }
-    });
-    setModalComponent(Modal);
-  }, [selModal]);
+  };
 
   return (
     <div>
       <h1>HOST APP</h1>
       Please select a remote modal to display:
-      <select value={selModal} onChange={e => {
-        setSelModal(e.target.value)
+      <select value={selModal?.scope || ''} onChange={e => {
+        onSelChange(e.target.value)
       }}>
         <option value=""></option>
         <option value="modalA">modalA</option>
@@ -33,11 +34,7 @@ const App = () => {
       <div style={{
         marginTop: '20px'
       }}>
-        {ModalComponent && (
-          <React.Suspense fallback="Loading ModalA">
-            <ModalComponent />
-          </React.Suspense>
-        )}
+      <DynamicComponent meta={selModal} />
       </div>
     </div>
   );

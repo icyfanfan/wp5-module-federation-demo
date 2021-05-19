@@ -1,19 +1,16 @@
 /**
- * webpack config for host-app
+ * webpack config for modal-app
  */
 const path = require('path');
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
-
 
 module.exports = {
   devServer: {
     contentBase: path.join(__dirname, "dist"),
-    port: 3000,
+    port: 3002,
   },
-  entry: './src/index',
+  entry: './src/App',
   output: {
-    path: path.resolve(__dirname, './dist'),
     publicPath: "auto",
   },
   module: {
@@ -27,7 +24,7 @@ module.exports = {
             presets: ['@babel/preset-react']
           }
         }
-      },
+      }
     ]
   },
   optimization: {
@@ -38,12 +35,17 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'host',
-      shared: { react: { singleton: true }, "react-dom": { singleton: true } },
+      name: 'modalB',
+      filename: 'remoteEntry.js',
+      exposes: {
+        './Modal': './src/App',
+      },
+      shared: [
+        {
+          react: { singleton: true },
+          "react-dom": { singleton: true },
+        },
+      ],
     }),
-    new HtmlWebpackPlugin({
-      template: "./public/index.html",
-      filename: 'index.html',
-    }),
-  ],
+  ]
 }
