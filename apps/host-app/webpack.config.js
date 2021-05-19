@@ -2,9 +2,28 @@
  * webpack config for host-app
  */
 const path = require('path');
+const { camelCase } = require("camel-case");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 
+const federatedRemotes = {
+  "modal-app-test-demo": "1.0.1",
+};
+
+const unpkgRemote = (name) =>
+  `${camelCase(name)}@https://unpkg.com/${name}@${
+    federatedRemotes[name]
+  }/dist/remoteEntry.js`;
+
+const remotes = Object.keys(federatedRemotes).reduce(
+  (remotes, lib) => ({
+    ...remotes,
+    [lib]: unpkgRemote(lib),
+  }),
+  {}
+);
+
+console.log(remotes);
 
 module.exports = {
   devServer: {
@@ -39,10 +58,8 @@ module.exports = {
   plugins: [
     new ModuleFederationPlugin({
       name: "host-app",
-      remotes: {
-        modalApp: "modalApp@http://localhost:3001/remoteEntry.js",
-      },
-      shared: { react: { singleton: true }, "react-dom": { singleton: true } },
+      remotes,
+      shared: { ...federatedRemotes, react: { singleton: true }, "react-dom": { singleton: true } },
     }),
     new HtmlWebpackPlugin({
       template: "./public/index.html",

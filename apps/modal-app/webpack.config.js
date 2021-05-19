@@ -1,15 +1,9 @@
 /**
  * webpack config for modal-app
  */
-const path = require('path');
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 
 module.exports = {
-  devServer: {
-    contentBase: path.join(__dirname, "dist"),
-    port: 3001,
-  },
-  entry: './src/index.js',
   output: {
     publicPath: "auto",
   },
@@ -35,7 +29,7 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'modalApp',
+      name: 'modalAppTestDemo',
       filename: 'remoteEntry.js',
       exposes: {
         './modalA': './src/containers/modalA/modalA',

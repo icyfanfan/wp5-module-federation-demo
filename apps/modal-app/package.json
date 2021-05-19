@@ -1,14 +1,17 @@
 {
-  "name": "modal-app",
-  "version": "1.0.0",
+  "name": "modal-app-test-demo",
+  "version": "1.0.1",
   "description": "",
-  "main": "index.js",
+  "browser": "dist/remoteEntry.js",
   "scripts": {
-    "build": "npx webpack --config=./webpack.config.js",
-    "start": "npx webpack serve --mode=development"
+    "build": "webpack",
+    "prepublishOnly": "webpack --mode=production"
   },
+  "files": [
+    "dist"
+  ],
   "keywords": [],
-  "author": "",
+  "author": "icyfanfan",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.12.3",

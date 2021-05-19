@@ -4,7 +4,7 @@ import { Header } from '../../components';
 const ModalB = () => {
   return (
     <div>
-      ModalB Component
+      ModalB Component 1.0.1
       <Header title="ModalB" />
     </div>
   );
