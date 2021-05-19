@@ -34,7 +34,7 @@ const App = () => {
         marginTop: '20px'
       }}>
         {ModalComponent && (
-          <React.Suspense fallback="Loading ModalA">
+          <React.Suspense fallback="Loading Modal...">
             <ModalComponent />
           </React.Suspense>
         )}
