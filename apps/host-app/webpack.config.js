@@ -23,8 +23,6 @@ const remotes = Object.keys(federatedRemotes).reduce(
   {}
 );
 
-console.log(remotes);
-
 module.exports = {
   devServer: {
     contentBase: path.join(__dirname, "dist"),
@@ -59,7 +57,7 @@ module.exports = {
     new ModuleFederationPlugin({
       name: "host-app",
       remotes,
-      shared: { ...federatedRemotes, react: { singleton: true }, "react-dom": { singleton: true } },
+      shared: { react: { singleton: true }, "react-dom": { singleton: true } },
     }),
     new HtmlWebpackPlugin({
       template: "./public/index.html",
