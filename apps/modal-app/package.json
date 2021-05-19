@@ -1,6 +1,6 @@
 {
   "name": "modal-app-test-demo",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "",
   "browser": "dist/remoteEntry.js",
   "scripts": {
