@@ -7,7 +7,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 
 const federatedRemotes = {
-  "modal-app-test-demo": "1.0.1",
+  "modal-app-test-demo": "^1.0.1",
 };
 
 const unpkgRemote = (name) =>
@@ -22,6 +22,10 @@ const remotes = Object.keys(federatedRemotes).reduce(
   }),
   {}
 );
+
+// const remotes = {
+//   'modal-app-test-demo': 'modalAppTestDemo@xxxxx'
+// }
 
 module.exports = {
   devServer: {
