@@ -1,30 +1,29 @@
 import React, {useEffect, useState} from 'react';
-import ModalA from 'modal-app-test-demo/modalA';
 
 const App = () => {
-  // const [ModalComponent, setModalComponent] = useState(null);
-  // const [selModal, setSelModal] = useState('');
+  const [ModalComponent, setModalComponent] = useState(null);
+  const [selModal, setSelModal] = useState('');
 
-  // useEffect(() => {
-  //   if(selModal === '') {
-  //     setModalComponent(null);
-  //     return;
-  //   }
-  //   const Modal = React.lazy(() => {
-  //     // cannot use `template string` in import
-  //     switch(selModal) {
-  //       case 'modalA': return import('modal-app-test-demo/modalA');
-  //       case 'modalB': return import('modal-app-test-demo/modalB');
-  //     }
-  //   });
-  //   setModalComponent(Modal);
-  // }, [selModal]);
+  useEffect(() => {
+    if(selModal === '') {
+      setModalComponent(null);
+      return;
+    }
+    const Modal = React.lazy(() => {
+      // cannot use `template string` in import
+      switch(selModal) {
+        case 'modalA': return import('modal-app-test-demo/modalA');
+        case 'modalB': return import('modal-app-test-demo/modalB');
+      }
+    });
+    setModalComponent(Modal);
+  }, [selModal]);
 
   return (
     <div>
       <h1>HOST APP DEMO</h1>
-      {/* Please select a remote modal to display: */}
-      {/* <select value={selModal} onChange={e => {
+      Please select a remote modal to display:
+      <select value={selModal} onChange={e => {
         setSelModal(e.target.value)
       }}>
         <option value=""></option>
@@ -39,8 +38,7 @@ const App = () => {
             <ModalComponent />
           </React.Suspense>
         )}
-      </div> */}
-      <ModalA />
+      </div>
     </div>
   );
 };
